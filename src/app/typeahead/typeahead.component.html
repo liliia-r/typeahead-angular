@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Typeahead component</h1>
+
+  <form>
+    <input
+      id="input-box"
+      type="text"
+      placeholder="Type here..."
+      [formControl]="search"
+    />
+  </form>
+
+  <h3>Characters</h3>
+
+  <div>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    <ul>
+      <li *ngFor="let result of searchResults$ | async">
+        <a>{{ result.name }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="character$ | async as character">
+    <div>{{ character | json }}</div>
+  </div>
+</div>
